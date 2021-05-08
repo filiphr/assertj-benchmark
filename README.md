@@ -17,3 +17,7 @@ You can then run the benchmark with:
 ```shell
 java -jar target/benchmark.jar -rff results.csv -rf csv
 ```
+
+This will generate the results in a csv file called results.csv.
+
+You can plot this in an image using `gnuplot` by executing `gnuplot benchmark.plt`. This will output `results.png`

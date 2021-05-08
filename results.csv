@@ -1,0 +1,7 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: type"
+"org.assertj.benchmark.ObjectAssertBenchmark.baseline","thrpt",1,25,450698487.649279,18062562.875691,"ops/s",default
+"org.assertj.benchmark.ObjectAssertBenchmark.baseline","thrpt",1,25,455389420.359132,9814195.626435,"ops/s",soft
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,293716425.489514,10761404.838173,"ops/s",default
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,98583897.735676,3826543.567694,"ops/s",soft
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,186942593.559991,3893396.394390,"ops/s",default
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,91261439.348414,2629086.246918,"ops/s",soft
