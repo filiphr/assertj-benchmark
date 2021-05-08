@@ -20,4 +20,6 @@ java -jar target/benchmark.jar -rff results.csv -rf csv
 
 This will generate the results in a csv file called results.csv.
 
-You can plot this in an image using `gnuplot` by executing `gnuplot benchmark.plt`. This will output `results.png`
+You can plot this in an image using `gnuplot` by executing `gnuplot benchmark.plt`. This will output `results.png`.
+You can also use `gnuplot -e "results='<result input>'" -e "output='<result output>'" benchmark.plt` to pass custom result input and custom result output.
+

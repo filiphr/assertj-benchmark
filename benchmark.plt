@@ -11,9 +11,12 @@ set autoscale
 # Input
 set datafile separator ','
 
+if (!exists("output")) output='results.png'
+if (!exists("results")) results='results.csv'
+
 # Output
 set terminal png enhanced font "Verdana,9"
-set output 'results.png'
+set output output
 set grid
 set key off
 set boxwidth 0.8 relative
@@ -28,5 +31,5 @@ set style line 2 lc rgb '#808080' lt 1
 set border 3 back ls 2
 set tics nomirror
 
-plot 'results.csv' every ::1 using 0:5:xticlabels( stringcolumn(1)[23 + strstrt(stringcolumn(1)[23:], "."):] . " (" . stringcolumn(8) . ")") with boxes ls 1,\
-     'results.csv' every ::1 using 0:($5 + 1500):(sprintf("%d",$5)) with labels offset char 0,1
+plot results every ::1 using 0:5:xticlabels( stringcolumn(1)[23 + strstrt(stringcolumn(1)[23:], "."):] . " (" . stringcolumn(8) . ")") with boxes ls 1,\
+     results every ::1 using 0:($5 + 1500):(sprintf("%d",$5)) with labels offset char 0,1
