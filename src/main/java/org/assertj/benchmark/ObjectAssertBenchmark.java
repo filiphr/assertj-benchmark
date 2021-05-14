@@ -21,11 +21,15 @@ import org.assertj.core.api.SoftAssertions;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
+import org.openjdk.jmh.infra.Blackhole;
+import org.openjdk.jmh.profile.JavaFlightRecorderProfiler;
+import org.openjdk.jmh.profile.StackProfiler;
 import org.openjdk.jmh.results.Result;
 import org.openjdk.jmh.results.RunResult;
 import org.openjdk.jmh.results.format.ResultFormatType;
@@ -38,8 +42,9 @@ import org.openjdk.jmh.runner.options.TimeValue;
  * @author Filip Hrisafov
  */
 @State(Scope.Benchmark)
-@Warmup(iterations = 5, time = 5, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 5, time = 5, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class ObjectAssertBenchmark {
 
     @Param({"default", "soft"})
@@ -66,18 +71,13 @@ public class ObjectAssertBenchmark {
     }
 
     @Benchmark
-    public AbstractLongAssert<?> baseline() {
-        return longAssert;
+    public void isEqualTo() {
+        longAssert.isEqualTo(expectedEqualTo);
     }
 
     @Benchmark
-    public AbstractLongAssert<?> isEqualTo() {
-        return longAssert.isEqualTo(expectedEqualTo);
-    }
-
-    @Benchmark
-    public AbstractLongAssert<?> isNotEqualTo() {
-        return longAssert.isNotEqualTo(expectedNotEqualTo);
+    public void isNotEqualTo() {
+        longAssert.isNotEqualTo(expectedNotEqualTo);
     }
 
     public static void main(String... args) throws Exception {
@@ -86,9 +86,11 @@ public class ObjectAssertBenchmark {
                 .warmupIterations(5)
                 .measurementIterations(5)
                 .measurementTime(TimeValue.seconds(1))
+                //.addProfiler(JavaFlightRecorderProfiler.class, "dir=./jfr")
+                //.addProfiler(StackProfiler.class, "lines=10")
                 .jvmArgs("-server")
                 .forks(1)
-                .resultFormat(ResultFormatType.TEXT)
+                .resultFormat(ResultFormatType.CSV)
                 .build();
 
         Collection<RunResult> results = new Runner(opts).run();
