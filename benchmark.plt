@@ -32,4 +32,5 @@ set border 3 back ls 2
 set tics nomirror
 
 plot results every ::1 using 0:5:xticlabels( stringcolumn(1)[23 + strstrt(stringcolumn(1)[23:], "."):] . " (" . stringcolumn(8) . ")") with boxes ls 1,\
+     results every ::1 using 0:5:6 with yerrorbars ls 1,\
      results every ::1 using 0:($5 + 1500):(sprintf("%d",$5)) with labels offset char 0,1
