@@ -15,7 +15,7 @@ package org.assertj.benchmark;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
-import org.assertj.core.api.AbstractLongAssert;
+import org.assertj.core.api.AbstractObjectAssert;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -27,7 +27,6 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
-import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.profile.JavaFlightRecorderProfiler;
 import org.openjdk.jmh.profile.StackProfiler;
 import org.openjdk.jmh.results.Result;
@@ -47,37 +46,59 @@ import org.openjdk.jmh.runner.options.TimeValue;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class ObjectAssertBenchmark {
 
+    @Param({"long", "objectArray", "booleanArray"})
+    private String objectType;
+
     @Param({"default", "soft"})
-    private String type;
+    private String assertType;
 
-    protected Long actual = 10L;
-    protected Long expectedEqualTo = 10L;
-    protected Long expectedNotEqualTo = 8L;
+    protected Object expectedEqualTo = 10L;
+    protected Object expectedNotEqualTo = 8L;
 
-    protected AbstractLongAssert<?> longAssert;
+    protected AbstractObjectAssert<?, ?> objectAssert;
 
     @Setup(Level.Trial)
     public void setup() {
-        switch (type) {
-            case "default":
-                longAssert = Assertions.assertThat(actual);
+        Object actual;
+        switch (objectType) {
+            case "long":
+                actual = 10L;
+                expectedEqualTo = 10L;
+                expectedNotEqualTo = 8L;
+            case "objectArray":
+                actual = new String[] { "Yoda", "Luke" };
+                expectedEqualTo = new String[] { "Yoda", "Luke" };
+                expectedNotEqualTo = new String[] { "Yoda", "Vader" };
                 break;
-            case "soft":
-                longAssert = new SoftAssertions().assertThat(actual);
+            case "booleanArray":
+                actual = new boolean[] { true, false };
+                expectedEqualTo = new boolean[] { true, false };
+                expectedNotEqualTo = new boolean[] { true, true };
                 break;
             default:
-                throw new IllegalStateException("Unknown type: " + type);
+                throw new IllegalStateException("Unknown object type: " + objectType);
+        }
+
+        switch (assertType) {
+            case "default":
+                objectAssert = Assertions.assertThat(actual);
+                break;
+            case "soft":
+                objectAssert = new SoftAssertions().assertThat(actual);
+                break;
+            default:
+                throw new IllegalStateException("Unknown assert type: " + assertType);
         }
     }
 
     @Benchmark
     public void isEqualTo() {
-        longAssert.isEqualTo(expectedEqualTo);
+        objectAssert.isEqualTo(expectedEqualTo);
     }
 
     @Benchmark
     public void isNotEqualTo() {
-        longAssert.isNotEqualTo(expectedNotEqualTo);
+        objectAssert.isNotEqualTo(expectedNotEqualTo);
     }
 
     public static void main(String... args) throws Exception {
