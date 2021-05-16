@@ -1,13 +1,13 @@
 "Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: assertType","Param: objectType"
-"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,246512.508045,3665.520194,"ops/ms",default,long
-"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,247754.200210,3304.934503,"ops/ms",default,objectArray
-"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,151075.942424,1403.989639,"ops/ms",default,booleanArray
-"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,101113.142480,525.922169,"ops/ms",soft,long
-"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,100879.446819,950.433334,"ops/ms",soft,objectArray
-"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,71582.495143,1461.136125,"ops/ms",soft,booleanArray
-"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,96706.822956,1257.604156,"ops/ms",default,long
-"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,97468.949608,616.134835,"ops/ms",default,objectArray
-"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,139789.862405,4479.417857,"ops/ms",default,booleanArray
-"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,59424.134032,1552.701292,"ops/ms",soft,long
-"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,60356.578177,1014.502219,"ops/ms",soft,objectArray
-"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,75236.955069,1062.700148,"ops/ms",soft,booleanArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,831866.741337,10871.567757,"ops/ms",default,long
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,247580.138905,4105.701017,"ops/ms",default,objectArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,150356.806861,1954.583099,"ops/ms",default,booleanArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,116338.984380,10894.482875,"ops/ms",soft,long
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,95010.976107,7607.680984,"ops/ms",soft,objectArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isEqualTo","thrpt",1,25,72673.110113,1165.258456,"ops/ms",soft,booleanArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,275711.460806,7043.666432,"ops/ms",default,long
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,97444.803944,1586.844607,"ops/ms",default,objectArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,144589.980488,2241.578517,"ops/ms",default,booleanArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,107982.071764,1804.271960,"ops/ms",soft,long
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,60614.075103,1082.643328,"ops/ms",soft,objectArray
+"org.assertj.benchmark.ObjectAssertBenchmark.isNotEqualTo","thrpt",1,25,74732.724988,1185.359976,"ops/ms",soft,booleanArray

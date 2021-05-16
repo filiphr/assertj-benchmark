@@ -65,6 +65,7 @@ public class ObjectAssertBenchmark {
                 actual = 10L;
                 expectedEqualTo = 10L;
                 expectedNotEqualTo = 8L;
+                break;
             case "objectArray":
                 actual = new String[] { "Yoda", "Luke" };
                 expectedEqualTo = new String[] { "Yoda", "Luke" };
