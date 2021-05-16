@@ -1,6 +1,6 @@
 # Labels
 set title 'AssertJ Object Assert'
-set ylabel 'Assertions per second'
+set ylabel 'Assertions per millisecond'
 set xlabel 'Operation'
 set xtics nomirror rotate by -45
 
